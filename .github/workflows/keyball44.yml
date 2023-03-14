@@ -32,6 +32,8 @@ jobs:
 
     - run: qmk compile -j 4 -kb keyball/keyball44 -km cymric
 
+    - run: qmk compile -j 4 -kb keyball/keyball44 -km somari
+
     - name: Archive firmwares
       uses: actions/upload-artifact@v3
       with:
