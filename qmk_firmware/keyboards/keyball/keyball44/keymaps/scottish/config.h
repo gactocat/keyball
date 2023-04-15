@@ -18,6 +18,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#define HOLD_ON_OTHER_KEY_PRESS
+
+#define TAPPING_FORCE_HOLD
+// #define QUICK_TAP_TERM 0
+
 #pragma once
 
 #ifdef RGBLIGHT_ENABLE
@@ -34,3 +39,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #define TAP_CODE_DELAY 5
+

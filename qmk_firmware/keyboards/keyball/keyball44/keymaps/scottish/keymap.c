@@ -24,24 +24,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // keymap for default
   [0] = LAYOUT_universal(
-    KC_ESC   , KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                                        KC_Y     , KC_U     , KC_I     , KC_O     , KC_P     , KC_DEL   ,
-    KC_TAB   , KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                                        KC_H     , KC_J     , KC_K     , KC_L     , KC_SCLN  , S(KC_7)  ,
-    KC_LSFT  , KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                                        KC_N     , KC_M     , KC_COMM  , KC_DOT   , KC_SLSH  , KC_INT1  ,
-              KC_LALT,KC_LGUI,LCTL_T(KC_LNG2)     ,LT(1,KC_SPC),LT(3,KC_LNG2),                  KC_BSPC,LT(2,KC_ENT), RCTL_T(KC_LNG2),     KC_RALT  , KC_PSCR
+    CMD_T(KC_TAB) , KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                                        KC_Y     , KC_U     , KC_I     , KC_O     , KC_P     , KC_MINS  ,
+    CTL_T(KC_ESC) , KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                                        KC_H     , KC_J     , KC_K     , KC_L     , KC_SCLN  , KC_QUOT  ,
+    KC_LSFT       , KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                                        KC_N     , KC_M     , KC_COMM  , KC_DOT   , KC_SLSH  , KC_EQL   ,
+                    KC_LALT  , CMD_T(KC_LNG2) , LT(1,KC_SPC)  , LT(3,KC_LNG1) , KC_BTN1 ,           KC_BSPC , LT(2,KC_ENT) , _______  , _______  ,            KC_RSFT
   ),
 
   [1] = LAYOUT_universal(
-    _______  ,  KC_F1   , KC_F2    , KC_F3   , KC_F4    , KC_F5    ,                                         KC_F6    , KC_F7    , KC_F8    , KC_F9    , KC_F10   , KC_F11   ,
-    _______  ,  _______ , _______  , KC_UP   , KC_ENT   , KC_DEL   ,                                         KC_PGUP  , KC_BTN1  , KC_UP    , KC_BTN2  , KC_BTN3  , KC_F12   ,
-    _______  ,  _______ , KC_LEFT  , KC_DOWN , KC_RGHT  , KC_BSPC  ,                                         KC_PGDN  , KC_LEFT  , KC_DOWN  , KC_RGHT  , _______  , _______  ,
-                  _______  , _______ , _______  ,         _______  , _______  ,                   _______  , _______  , _______       , _______  , _______
+    _______  , KC_1     , KC_2     , KC_3     , KC_4     , KC_5     ,                                         KC_6     , KC_7     , KC_8     , KC_9     , KC_0     , KC_BSLS  ,
+    _______  , KC_BRID  , KC_BRIU  , KC_MPRV  , KC_MPLY  , KC_MNXT  ,                                        G(KC_LBRC),C(KC_DOWN), C(KC_UP) ,G(KC_RBRC), KC_LBRC  , KC_RBRC  ,
+    _______  ,  _______ , KC_MUTE  , KC_VOLD  , KC_VOLU  , _______  ,                                         _______  , KC_BTN1  , KC_BTN3  , KC_BTN2  ,UC(0x5DAD), KC_GRV   ,
+                _______ , _______  ,            _______  , _______  , _______  ,                    KC_DEL  , _______  , _______  , _______  ,            _______
   ),
 
   [2] = LAYOUT_universal(
-    _______  ,S(KC_QUOT), KC_7     , KC_8    , KC_9     , S(KC_8)  ,                                         S(KC_9)  , S(KC_1)  , S(KC_6)  , KC_LBRC  , S(KC_4)  , _______  ,
-    _______  ,S(KC_SCLN), KC_4     , KC_5    , KC_6     , KC_RBRC  ,                                         KC_NUHS  , KC_MINS  , S(KC_EQL), S(KC_3)  , KC_QUOT  , S(KC_2)  ,
-    _______  ,S(KC_MINS), KC_1     , KC_2    , KC_3     ,S(KC_RBRC),                                        S(KC_NUHS),S(KC_INT1), KC_EQL   ,S(KC_LBRC),S(KC_SLSH),S(KC_INT3),
-                  KC_0     , KC_DOT  , _______  ,         _______  , _______  ,                   KC_DEL   , _______  , _______       , _______  , _______
+    _______  , S(KC_1)  , S(KC_2)  , S(KC_3)  , S(KC_4)  , S(KC_5)  ,                                         S(KC_6)  , S(KC_7)  , S(KC_8)  , S(KC_9)  , S(KC_0)  ,S(KC_BSLS),
+    _______  , KC_F1    , KC_F2    , KC_F3    , KC_F4    , KC_F5    ,                                         KC_LEFT  , KC_DOWN  , KC_UP    , KC_RGHT  ,S(KC_LBRC),S(KC_RBRC),
+    _______  , KC_F6    , KC_F7    , KC_F8    , KC_F9    , KC_F10   ,                                         KC_F11   , KC_F12   , TO(0)    , TO(1)    , TO(2)    ,S(KC_GRV) ,
+               _______  , _______  ,            _______  , _______  , _______  ,                   _______  , _______  , _______  , _______  ,            _______
   ),
 
   [3] = LAYOUT_universal(
