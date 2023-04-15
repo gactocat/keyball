@@ -1,0 +1,5 @@
+RGBLIGHT_ENABLE = no
+
+OLED_ENABLE = yes
+
+EXTRAKEY_ENABLE = yes
