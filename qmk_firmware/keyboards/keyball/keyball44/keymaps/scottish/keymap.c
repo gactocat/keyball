@@ -3,8 +3,6 @@ Copyright 2022 @Yowkees
 Copyright 2022 MURAOKA Taro (aka KoRoN, @kaoriya)
 
 This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
 (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
@@ -48,14 +46,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          RGB_TOG  , _______  , _______  , _______  , _______  , _______  ,                                        RGB_M_P  , RGB_M_B  , RGB_M_R  , RGB_M_SW , RGB_M_SN , RGB_M_K  ,
          RGB_MOD  , RGB_HUI  , RGB_SAI  , RGB_VAI  , _______  , SCRL_DVI ,                                        RGB_M_X  , RGB_M_G  , RGB_M_T  , RGB_M_TW , _______  , _______  ,
          RGB_RMOD , RGB_HUD  , RGB_SAD  , RGB_VAD  , _______  , SCRL_DVD ,                                        CPI_D1K  , CPI_D100 , CPI_I100 , CPI_I1K  , _______  , KBC_SAVE ,
-                       QK_BOOT    , KBC_RST  , _______  ,        _______  , _______  ,                   _______  , _______  , _______       , KBC_RST  , QK_BOOT
+                       QK_BOOT    , KBC_RST  , _______  ,        _______  , _______  ,                 _______  , _______  , _______  , KBC_RST  ,            QK_BOOT
+  ),
+
+  [4] = LAYOUT_universal(
+         _______  , _______  , _______  , _______  , _______  , _______  ,                                        _______  , _______  , _______  , _______  , _______  , _______  ,
+         _______  , _______  , _______  , _______  , _______  , _______  ,                                        _______  , KC_BTN1  , KC_BTN3  , KC_BTN2  , MO(3)    , _______  ,
+         _______  , _______  , _______  , _______  , _______  , _______  ,                                        _______  , _______  , _______  , _______  , _______  , _______  ,
+                    _______  , _______  ,            _______  , _______  , _______  ,                  _______  , _______  , _______  , _______  ,            _______
   ),
 };
 // clang-format on
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    // Auto enable scroll mode when the highest layer is 3
-    keyball_set_scroll_mode(get_highest_layer(state) == 3);
+    switch(get_highest_layer(remove_auto_mouse_layer(state, true))) {
+        case 3:
+            // Auto enable scroll mode when the highest layer is 3
+            // remove_auto_mouse_target must be called to adjust state *before* setting enable
+            state = remove_auto_mouse_layer(state, false);
+            set_auto_mouse_enable(false);
+            keyball_set_scroll_mode(true);
+            break;
+        default:
+            set_auto_mouse_enable(true);
+            keyball_set_scroll_mode(false);
+            break;
+    }
     return state;
 }
 
@@ -68,3 +84,7 @@ void oledkit_render_info_user(void) {
     keyball_oled_render_ballinfo();
 }
 #endif
+
+void pointing_device_init_user(void) {
+    set_auto_mouse_enable(true);
+}
